@@ -70,9 +70,7 @@ def view_image_get_distance(color1_lower,color1_upper,color2_lower,color2_upper,
             list_of_h.append(horizontal_distance)
             list_of_v.append(vertical_distance)
             if count == 1000:
-                h_distance = sum(list_of_h) / 1000
-                v_distance = sum(list_of_v) / 1000
-                return h_distance, v_distance
+                return horizontal_distance, vertical_distance
 
         # Show the frame
         cv2.imshow('Object Tracking', frame)
