@@ -2,7 +2,7 @@ import MachineVision as mv
 import Movement as bo
 distance = 100000000
 
-while horizontal_d > 50 and verticle_d > 50:
+while horizontal_d > 50 and vertical_d > 50:
     capture_device = mv.set_capture(0)
     color1_lower,color1_upper,color2_lower,color2_upper = mv.set_color_ranges()
-    horizontal_d,verticle_d = mv.view_image_get_distance(color1_lower,color1_upper,color2_lower,color2_upper,capture_device)
+    horizontal_d,vertical_d = mv.view_image_get_distance(color1_lower,color1_upper,color2_lower,color2_upper,capture_device)
