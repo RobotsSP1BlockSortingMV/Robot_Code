@@ -62,7 +62,9 @@ def view_image_get_distance(color1_lower,color1_upper,color2_lower,color2_upper,
         # Calculate distance between centroids
         if 'centroid1' in locals() and 'centroid2' in locals():
             horizontal_distance = centroid1[0] - centroid2[0]
+            vertical_distance = centroid1[1] - centroid2[1]
             cv2.putText(frame, f'Horizontal Distance: {horizontal_distance:.2f} pixels', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+            cv2.putText(frame, f'Vertical Distance: {vertical_distance:.2f} pixels', (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
             if count == 1000:
                 return horizontal_distance
 
