@@ -41,6 +41,10 @@ while True:
     mask1 = cv2.inRange(hsv, color1_lower, color1_upper)
     mask2 = cv2.inRange(hsv, color2_lower, color2_upper)
 
+    kernel = np.ones((5, 5), np.uint8)
+    mask1 = cv2.morphologyEx(mask1, cv2.MORPH_OPEN, kernel)
+    mask2 = cv2.morphologyEx(mask2, cv2.MORPH_OPEN, kernel)
+
     # Find contours in the masks
     contours1, _ = cv2.findContours(mask1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     contours2, _ = cv2.findContours(mask2, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
