@@ -21,13 +21,13 @@ rgb_color2 = np.uint8([[[255, 0, 51]]])  # RGB color
 hsv_color2 = cv2.cvtColor(rgb_color2, cv2.COLOR_BGR2HSV)
 
 # Define a threshold range based on the HSV color
-color2_lower = np.array([hsv_color2[0][0][0] - 10, 100, 100])  # Adjust the -10 to fit your desired range
-color2_upper = np.array([hsv_color2[0][0][0] + 10, 255, 255])  # Adjust the +10 to fit your desired range
+#color2_lower = np.array([hsv_color2[0][0][0] - 10, 100, 100])  # Adjust the -10 to fit your desired range
+#color2_upper = np.array([hsv_color2[0][0][0] + 10, 255, 255])  # Adjust the +10 to fit your desired range
 
 #color1_lower = np.array([25, 100, 100])
 #color1_upper = np.array([35, 255, 255])
-#color2_lower = np.array([100, 100, 100])
-#color2_upper = np.array([120, 255, 255])
+color2_lower = np.array([100, 100, 100])
+color2_upper = np.array([120, 255, 255])
 
 while True:
     ret, frame = cap.read()
@@ -40,10 +40,6 @@ while True:
     # Create masks for each color range
     mask1 = cv2.inRange(hsv, color1_lower, color1_upper)
     mask2 = cv2.inRange(hsv, color2_lower, color2_upper)
-
-    kernel = np.ones((5, 5), np.uint8)
-    mask1 = cv2.morphologyEx(mask1, cv2.MORPH_OPEN, kernel)
-    mask2 = cv2.morphologyEx(mask2, cv2.MORPH_OPEN, kernel)
 
     # Find contours in the masks
     contours1, _ = cv2.findContours(mask1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
