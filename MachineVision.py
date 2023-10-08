@@ -22,7 +22,7 @@ hsv_color2 = cv2.cvtColor(rgb_color2, cv2.COLOR_BGR2HSV)
 
 # Define a threshold range based on the HSV color
 color2_lower = np.array([hsv_color2[0][0][0] - 10, 100, 100])  # Adjust the -10 to fit your desired range
-color2_upper = np.array([hsv_color2[0][0][0] + 10, 100, 100])  # Adjust the +10 to fit your desired range
+color2_upper = np.array([hsv_color2[0][0][0] + 10, 255, 255])  # Adjust the +10 to fit your desired range
 
 #color1_lower = np.array([25, 100, 100])
 #color1_upper = np.array([35, 255, 255])
