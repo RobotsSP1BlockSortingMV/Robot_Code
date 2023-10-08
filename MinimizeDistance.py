@@ -1,6 +1,7 @@
 import MachineVision as mv
 import Movement as bo
-distance = 100000000
+horizontal_d = 10000000
+vertical_d = 10000000
 
 while horizontal_d > 50 and vertical_d > 50:
     capture_device = mv.set_capture(0)
