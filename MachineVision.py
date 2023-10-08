@@ -17,12 +17,19 @@ def set_color_ranges():
 
     # Convert RGB color (255, 0, 51) to HSV
     rgb_color2 = np.uint8([[[255, 0, 51]]])  # RGB color
+    hsv_color2 = cv2.cvtColor(rgb_color2, cv2.COLOR_BGR2HSV)
+
+    # Define a threshold range based on the HSV color
+    #color2_lower = np.array([hsv_color2[0][0][0] - 10, 100, 100])  # Adjust the -10 to fit your desired range
+    #color2_upper = np.array([hsv_color2[0][0][0] + 10, 255, 255])  # Adjust the +10 to fit your desired range
+
+    #color1_lower = np.array([25, 100, 100])
+    #color1_upper = np.array([35, 255, 255])
     color2_lower = np.array([100, 100, 100])
     color2_upper = np.array([120, 255, 255])
 
     return color1_lower,color1_upper,color2_lower,color2_upper
 
-iteration_count = 0
 def view_image_get_distance(color1_lower,color1_upper,color2_lower,color2_upper,cap):
     count = 0
     while True:
@@ -56,12 +63,12 @@ def view_image_get_distance(color1_lower,color1_upper,color2_lower,color2_upper,
         if 'centroid1' in locals() and 'centroid2' in locals():
             distance = np.sqrt((centroid1[0] - centroid2[0])**2 + (centroid1[1] - centroid2[1])**2)
             cv2.putText(frame, f'Distance: {distance:.2f} pixels', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-            if iteration_count == 1000:
+            if count == 1000:
                 return distance
 
-        iteration_count+= 1
         # Show the frame
         cv2.imshow('Object Tracking', frame)
+        count += 1
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
