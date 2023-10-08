@@ -5,8 +5,19 @@ import numpy as np
 cap = cv2.VideoCapture(0)
 
 # Define the colors to track in HSV format (you can use a tool like colorpicker.net)
-color1_lower = np.array([25, 100, 100])
-color1_upper = np.array([35, 255, 255])
+import cv2
+import numpy as np
+
+# Convert RGB color (20, 0, 255) to HSV
+rgb_color = np.uint8([[[20, 0, 255]]])  # RGB color
+hsv_color = cv2.cvtColor(rgb_color, cv2.COLOR_BGR2HSV)
+
+# Define a threshold range based on the HSV color
+color1_lower = np.array([hsv_color[0][0][0] - 10, 100, 100])  # Adjust the -10 to fit your desired range
+color1_upper = np.array([hsv_color[0][0][0] + 10, 255, 255])  # Adjust the +10 to fit your desired range
+
+#color1_lower = np.array([25, 100, 100])
+#color1_upper = np.array([35, 255, 255])
 color2_lower = np.array([100, 100, 100])
 color2_upper = np.array([120, 255, 255])
 
