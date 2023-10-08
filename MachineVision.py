@@ -71,6 +71,8 @@ def view_image_get_distance(color1_lower,color1_upper,color2_lower,color2_upper,
         # Show the frame
         cv2.imshow('Object Tracking', frame)
         count += 1
+        if count > 1000:
+            return -1,-1
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
