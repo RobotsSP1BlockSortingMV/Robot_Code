@@ -71,10 +71,6 @@ def walking_position(robot_motion):
     if response_body:
         print(f"Response Body: {response_body}")
 
-
-
-session = requests.Session()
-client = session
 #use ip address from wlano0
 #Boot up gray rasberry pie wait for it to say cloud login
 #Press enter a few times then login when it says UXA90 login
@@ -82,10 +78,32 @@ client = session
 #IP address will be displayed in the uppder right hand corner from the device wlano0
 #Append the IP address as I am below to make API calls to command the robot
 
-base_address = '10.101.142.174'
-baseIP = 'http://' + base_address
-port = 50000
-baseIP = 'http://' + base_address + ':'+str(port) + '/'
-#robot_head = baseIP + 'motor?id='
-robot_motion = baseIP + 'motion/'
-sit_down(robot_motion)
+def movement_command(select_command):
+    session = requests.Session()
+    client = session
+    base_address = '10.101.142.174'
+    baseIP = 'http://' + base_address
+    port = 50000
+    baseIP = 'http://' + base_address + ':'+str(port) + '/'
+    robot_head = baseIP + 'motor?id='
+    robot_motion = baseIP + 'motion/'
+    if select_command == 'walk_left':
+        walk_left(robot_motion)
+    elif select_command == 'walk_right':
+        walk_right(robot_motion)
+    elif select_command == 'walk_forward_short':
+        walk_forward_short(robot_motion)
+    elif select_command == 'turn_right':
+        turn_right(robot_motion)
+    elif select_command == 'turn_left':
+        turn_left(robot_motion)
+    elif select_command == 'sit_down':
+        sit_down(robot_motion)
+    elif select_command == 'standing_position':
+        standing_position(robot_motion)
+    elif select_command == 'walking_position':
+        walking_position(robot_motion)
+
+
+
+
