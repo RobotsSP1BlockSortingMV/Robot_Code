@@ -1,5 +1,5 @@
 import MachineVision as mv
-import Movement as bs
+import Movement as bo
 distance = 100000000
 
 while distance > 100:
