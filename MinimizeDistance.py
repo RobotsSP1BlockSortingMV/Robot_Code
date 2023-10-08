@@ -1,6 +1,8 @@
-import BaseMovement as bs
-import MachineVision as mv
 
+import MachineVision as mv
+distance = 100000000
 num_threads = 2
-capture_device = mv.set_capture(0)
-print(mv.view_image_get_distance(mv.set_color_ranges(),capture_device))
+while distance > 100:
+    capture_device = mv.set_capture(0)
+    color1_lower,color1_upper,color2_lower,color2_upper = mv.set_color_ranges()
+    distance = mv.view_image_get_distance(color1_lower,color1_upper,color2_lower,color2_upper,capture_device)
