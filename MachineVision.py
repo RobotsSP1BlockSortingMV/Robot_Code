@@ -24,8 +24,8 @@ def set_color_ranges():
 
     #color1_lower = np.array([25, 100, 100])
     #color1_upper = np.array([35, 255, 255])
-    color2_lower = np.array([100, 100, 100])
-    color2_upper = np.array([120, 255, 255])
+    color2_lower = np.array([100, 50, 100])
+    color2_upper = np.array([120, 153, 255])
     return color1_lower,color1_upper,color2_lower,color2_upper
 
 def view_image_get_distance(color1_lower,color1_upper,color2_lower,color2_upper,cap):
