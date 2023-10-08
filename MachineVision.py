@@ -6,35 +6,23 @@ def set_capture(capture_device):
     return cap
 
 def set_color_ranges():
-    # Convert RGB color (20, 0, 255) to HSV
-    rgb_color1 = np.uint8([[[20, 0, 255]]])  # RGB color
-    hsv_color1 = cv2.cvtColor(rgb_color1, cv2.COLOR_BGR2HSV)
+    # Convert RGB color (20, 0, 255) to HSV for blue
+    rgb_blue = np.uint8([[[20, 0, 255]]])
+    hsv_blue = cv2.cvtColor(rgb_blue, cv2.COLOR_BGR2HSV)
 
-    # Define a threshold range based on the HSV color
-    color1_lower = np.array([hsv_color1[0][0][0] - 10, 100, 100])  # Adjust the -10 to fit your desired range
-    color1_upper = np.array([hsv_color1[0][0][0] + 10, 255, 255])  # Adjust the +10 to fit your desired range
+    # Define a threshold range for blue in the HSV color space
+    blue_lower = np.array([hsv_blue[0][0][0] - 10, 100, 100])  # Adjust the -10 to fit your desired range
+    blue_upper = np.array([hsv_blue[0][0][0] + 10, 255, 255])  # Adjust the +10 to fit your desired range
 
-    # Convert RGB color (255, 0, 51) to HSV
-    #rgb_color2 = np.uint8([[[255, 0, 51]]])  # RGB color
-    #hsv_color2 = cv2.cvtColor(rgb_color2, cv2.COLOR_BGR2HSV)
-
-    # Define a threshold range based on the HSV color
-    #color2_lower = np.array([hsv_color2[0][0][0] - 10, 100, 100])  # Adjust the -10 to fit your desired range
-    #color2_upper = np.array([hsv_color2[0][0][0] + 10, 255, 255])  # Adjust the +10 to fit your desired range
-
-    #color1_lower = np.array([25, 100, 100])
-    #color1_upper = np.array([35, 255, 255])
-    #color2_lower = np.array([100, 100, 100])
-    #color2_upper = np.array([120, 255, 255])
-
+    # Convert RGB color (0, 153, 0) to HSV for green
     rgb_green = np.uint8([[[0, 153, 0]]])
     hsv_green = cv2.cvtColor(rgb_green, cv2.COLOR_BGR2HSV)
 
     # Define a threshold range for green in the HSV color space
-    color2_lower = np.array([hsv_green[0][0][0] - 10, 100, 100])  # Adjust the -10 to fit your desired range
-    color2_upper = np.array([hsv_green[0][0][0] + 10, 255, 255])  # Adjust the +10 to fit your desired range
+    green_lower = np.array([hsv_green[0][0][0] - 10, 100, 100])  # Adjust the -10 to fit your desired range
+    green_upper = np.array([hsv_green[0][0][0] + 10, 255, 255])  # Adjust the +10 to fit your desired range
     
-    return color1_lower,color1_upper,color2_lower,color2_upper
+    return blue_lower,blue_upper,green_lower,green_upper
 
 def view_image_get_distance(color1_lower,color1_upper,color2_lower,color2_upper,cap):
     count = 0
