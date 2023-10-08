@@ -1,4 +1,4 @@
-import BaseMovement as bs
+import Movement.py as bs
 import MachineVision as mv
 
 num_threads = 2

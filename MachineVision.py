@@ -17,7 +17,6 @@ def set_color_ranges():
 
     # Convert RGB color (255, 0, 51) to HSV
     rgb_color2 = np.uint8([[[255, 0, 51]]])  # RGB color
-    hsv_color2 = cv2.cvtColor(rgb_color2, cv2.COLOR_BGR2HSV)
     color2_lower = np.array([100, 100, 100])
     color2_upper = np.array([120, 255, 255])
 
