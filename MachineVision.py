@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-import threading
 def set_capture(capture_device):
     # Initialize video capture from the camera
     cap = cv2.VideoCapture(capture_device)
@@ -39,8 +38,6 @@ def set_color_ranges():
 
 def view_image_get_distance(color1_lower,color1_upper,color2_lower,color2_upper,cap):
     count = 0
-    list_of_v = []
-    list_of_h = []
     while True:
         ret, frame = cap.read()
         if not ret:
@@ -74,8 +71,6 @@ def view_image_get_distance(color1_lower,color1_upper,color2_lower,color2_upper,
             vertical_distance = centroid1[1] - centroid2[1]
             cv2.putText(frame, f'Horizontal Distance: {horizontal_distance:.2f} pixels', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
             cv2.putText(frame, f'Vertical Distance: {vertical_distance:.2f} pixels', (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-            list_of_h.append(horizontal_distance)
-            list_of_v.append(vertical_distance)
             if count == 1000:
                 return horizontal_distance, vertical_distance
 
