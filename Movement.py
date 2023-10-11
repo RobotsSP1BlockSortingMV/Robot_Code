@@ -71,6 +71,53 @@ def walking_position(robot_motion):
     if response_body:
         print(f"Response Body: {response_body}")
 
+#Left upper shoulder - id:12 ; min: 10 ; max:254 ; default:180 ; inverted:true ; min is slightly behind the user, max is straight up
+#Right upper shoulder - id:13 ; min: 10 ; max:254 ; default:180 ; inverted:false ; min is straight up, max is
+#Left lower shoulder - id:14 ; min:135 ; max:254 ; default:135 ; inverted:false
+#Right lower shoulder - id:15 ; min:1 ; max:120 ; default:120 ; inverted:true
+
+def move_left_upper_shoulder(robot_arm,position):
+    movement = robot_arm + '12 & position = ' + position
+    print(movement)
+    response_body = asyncio.run(APICall(movement))
+    if response_body:
+        print(f"Response Body: {response_body}")
+
+def move_right_upper_shoulder(robot_arm,position):
+    movement = robot_arm + '13 & position = ' + position
+    print(movement)
+    response_body = asyncio.run(APICall(movement))
+    if response_body:
+        print(f"Response Body: {response_body}")
+
+def move_left_lower_shoulder(robot_arm,position):
+    movement = robot_arm + '14 & position = ' + position
+    print(movement)
+    response_body = asyncio.run(APICall(movement))
+    if response_body:
+        print(f"Response Body: {response_body}")
+
+def move_right_lower_shoulder(robot_arm,position):
+    movement = robot_arm + '15 & position = ' + position
+    print(movement)
+    response_body = asyncio.run(APICall(movement))
+    if response_body:
+        print(f"Response Body: {response_body}")
+
+def move_neck_left_or_right(robot_head,position):
+    movement = robot_head + '23 & position = '+ position
+    print(movement)
+    response_body = asyncio.run(APICall(movement))
+    if response_body:
+        print(f"Response Body: {response_body}")
+
+def move_head_up_or_down(robot_head,position):
+    movement = robot_head + '24 & position =' + position
+    print(movement)
+    response_body = asyncio.run(APICall(movement))
+    if response_body:
+        print(f"Response Body: {response_body}")
+
 #use ip address from wlano0
 #Boot up gray rasberry pie wait for it to say cloud login
 #Press enter a few times then login when it says UXA90 login
@@ -78,7 +125,7 @@ def walking_position(robot_motion):
 #IP address will be displayed in the uppder right hand corner from the device wlano0
 #Append the IP address as I am below to make API calls to command the robot
 
-def movement_command(select_command):
+def movement_command(select_command,position):
     session = requests.Session()
     client = session
     base_address = '10.101.142.174'
@@ -86,6 +133,7 @@ def movement_command(select_command):
     port = 50000
     baseIP = 'http://' + base_address + ':'+str(port) + '/'
     robot_head = baseIP + 'motor?id='
+    robot_arm = baseIP + 'motor?id='
     robot_motion = baseIP + 'motion/'
     if select_command == 'walk_left':
         walk_left(robot_motion)
@@ -103,6 +151,19 @@ def movement_command(select_command):
         standing_position(robot_motion)
     elif select_command == 'walking_position':
         walking_position(robot_motion)
+    elif select_command == 'move_left_upper_shoulder':
+        move_left_upper_shoulder(robot_arm,position)
+    elif select_command == 'move_right_upper_shoulder':
+        move_right_upper_shoulder(robot_arm,position)
+    elif select_command == 'move_left_lower_shoulder':
+        move_left_lower_shoulder(robot_arm,position)
+    elif select_command == 'move_right_lower_shoulder':
+        move_right_lower_shoulder(robot_arm,position)
+    elif select_command == 'move_neck_left_or_right':
+        move_neck_left_or_right(robot_head,position)
+    elif select_command == 'move_head_up_or_down':
+        move_head_up_or_down(robot_head,position)
+
 
 
 
