@@ -77,42 +77,42 @@ def walking_position(robot_motion):
 #Right lower shoulder - id:15 ; min:1 ; max:120 ; default:120 ; inverted:true
 
 def move_left_upper_shoulder(robot_arm,position):
-    movement = robot_arm + '12 & position = ' + position
+    movement = robot_arm + '12&position=' + position + '&torq=4'
     print(movement)
     response_body = asyncio.run(APICall(movement))
     if response_body:
         print(f"Response Body: {response_body}")
 
 def move_right_upper_shoulder(robot_arm,position):
-    movement = robot_arm + '13 & position = ' + position
+    movement = robot_arm + '13&position=' + position + '&torq=4'
     print(movement)
     response_body = asyncio.run(APICall(movement))
     if response_body:
         print(f"Response Body: {response_body}")
 
 def move_left_lower_shoulder(robot_arm,position):
-    movement = robot_arm + '14 & position = ' + position
+    movement = robot_arm + '14&position=' + position + '&torq=4'
     print(movement)
     response_body = asyncio.run(APICall(movement))
     if response_body:
         print(f"Response Body: {response_body}")
 
 def move_right_lower_shoulder(robot_arm,position):
-    movement = robot_arm + '15 & position = ' + position
+    movement = robot_arm + '15&position=' + position + '&torq=4'
     print(movement)
     response_body = asyncio.run(APICall(movement))
     if response_body:
         print(f"Response Body: {response_body}")
 
 def move_neck_left_or_right(robot_head,position):
-    movement = robot_head + '23 & position = '+ position
+    movement = robot_head + '23&position='+ position + '&torq=4'
     print(movement)
     response_body = asyncio.run(APICall(movement))
     if response_body:
         print(f"Response Body: {response_body}")
 
 def move_head_up_or_down(robot_head,position):
-    movement = robot_head + '24 & position =' + position
+    movement = robot_head + '24&position=' + position + '&torq=4'
     print(movement)
     response_body = asyncio.run(APICall(movement))
     if response_body:
@@ -128,7 +128,7 @@ def move_head_up_or_down(robot_head,position):
 def movement_command(select_command,position):
     session = requests.Session()
     client = session
-    base_address = '10.101.142.174'
+    base_address = '10.101.148.223'
     baseIP = 'http://' + base_address
     port = 50000
     baseIP = 'http://' + base_address + ':'+str(port) + '/'
@@ -152,17 +152,19 @@ def movement_command(select_command,position):
     elif select_command == 'walking_position':
         walking_position(robot_motion)
     elif select_command == 'move_left_upper_shoulder':
-        move_left_upper_shoulder(robot_arm,position)
+        move_left_upper_shoulder(robot_arm,str(position))
     elif select_command == 'move_right_upper_shoulder':
-        move_right_upper_shoulder(robot_arm,position)
+        move_right_upper_shoulder(robot_arm,str(position))
     elif select_command == 'move_left_lower_shoulder':
-        move_left_lower_shoulder(robot_arm,position)
+        move_left_lower_shoulder(robot_arm,str(position))
     elif select_command == 'move_right_lower_shoulder':
-        move_right_lower_shoulder(robot_arm,position)
+        move_right_lower_shoulder(robot_arm,str(position))
     elif select_command == 'move_neck_left_or_right':
-        move_neck_left_or_right(robot_head,position)
+        move_neck_left_or_right(robot_head,str(position))
     elif select_command == 'move_head_up_or_down':
-        move_head_up_or_down(robot_head,position)
+        move_head_up_or_down(robot_head,str(position))
+
+
 
 
 
