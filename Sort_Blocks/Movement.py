@@ -67,6 +67,7 @@ def standing_position(robot_motion):
 
 def walking_position(robot_motion):
     print(robot_motion + 'basic_motion')
+    response_body1 = asyncio.run(APICall(robot_motion + 'pc_control'))
     response_body = asyncio.run(APICall(robot_motion + 'basic_motion'))
     if response_body:
         print(f"Response Body: {response_body}")
@@ -76,44 +77,56 @@ def walking_position(robot_motion):
 #Left lower shoulder - id:14 ; min:135 ; max:254 ; default:135 ; inverted:false
 #Right lower shoulder - id:15 ; min:1 ; max:120 ; default:120 ; inverted:true
 
-def move_left_upper_shoulder(robot_arm,position):
+def move_left_upper_shoulder(robot_arm,position,robot_motion):
     movement = robot_arm + '12&position=' + position + '&torq=4'
     print(movement)
+    response_body1 = asyncio.run(APICall(robot_motion + 'pc_control'))
     response_body = asyncio.run(APICall(movement))
     if response_body:
         print(f"Response Body: {response_body}")
 
-def move_right_upper_shoulder(robot_arm,position):
+def move_right_upper_shoulder(robot_arm,position,robot_motion):
     movement = robot_arm + '13&position=' + position + '&torq=4'
     print(movement)
     response_body = asyncio.run(APICall(movement))
     if response_body:
         print(f"Response Body: {response_body}")
 
-def move_left_lower_shoulder(robot_arm,position):
+def move_left_lower_shoulder(robot_arm,position,robot_motion):
     movement = robot_arm + '14&position=' + position + '&torq=4'
     print(movement)
+    response_body1 = asyncio.run(APICall(robot_motion + 'pc_control'))
     response_body = asyncio.run(APICall(movement))
     if response_body:
         print(f"Response Body: {response_body}")
 
-def move_right_lower_shoulder(robot_arm,position):
+def move_right_elbow(robot_arm,position,robot_motion):
+    movement = robot_arm + '19&position=' + position + '&torq=4'
+    print(movement)
+    response_body1 = asyncio.run(APICall(robot_motion + 'pc_control'))
+    response_body = asyncio.run(APICall(movement))
+
+
+def move_right_lower_shoulder(robot_arm,position,robot_motion):
     movement = robot_arm + '15&position=' + position + '&torq=4'
     print(movement)
+    response_body1 = asyncio.run(APICall(robot_motion + 'pc_control'))
     response_body = asyncio.run(APICall(movement))
     if response_body:
         print(f"Response Body: {response_body}")
 
-def move_neck_left_or_right(robot_head,position):
+def move_neck_left_or_right(robot_head,position,robot_motion):
     movement = robot_head + '23&position='+ position + '&torq=4'
     print(movement)
+    response_body1 = asyncio.run(APICall(robot_motion + 'pc_control'))
     response_body = asyncio.run(APICall(movement))
     if response_body:
         print(f"Response Body: {response_body}")
 
-def move_head_up_or_down(robot_head,position):
+def move_head_up_or_down(robot_head,position,robot_motion):
     movement = robot_head + '24&position=' + position + '&torq=4'
     print(movement)
+    response_body1 = asyncio.run(APICall(robot_motion + 'pc_control'))
     response_body = asyncio.run(APICall(movement))
     if response_body:
         print(f"Response Body: {response_body}")
@@ -152,17 +165,19 @@ def movement_command(select_command,position):
     elif select_command == 'walking_position':
         walking_position(robot_motion)
     elif select_command == 'move_left_upper_shoulder':
-        move_left_upper_shoulder(robot_arm,str(position))
+        move_left_upper_shoulder(robot_arm,str(position),robot_motion)
     elif select_command == 'move_right_upper_shoulder':
-        move_right_upper_shoulder(robot_arm,str(position))
+        move_right_upper_shoulder(robot_arm,str(position),robot_motion)
     elif select_command == 'move_left_lower_shoulder':
-        move_left_lower_shoulder(robot_arm,str(position))
+        move_left_lower_shoulder(robot_arm,str(position),robot_motion)
     elif select_command == 'move_right_lower_shoulder':
-        move_right_lower_shoulder(robot_arm,str(position))
+        move_right_lower_shoulder(robot_arm,str(position),robot_motion)
     elif select_command == 'move_neck_left_or_right':
-        move_neck_left_or_right(robot_head,str(position))
+        move_neck_left_or_right(robot_head,str(position),robot_motion)
     elif select_command == 'move_head_up_or_down':
-        move_head_up_or_down(robot_head,str(position))
+        move_head_up_or_down(robot_head,str(position),robot_motion)
+    elif select_command == 'move_right_elbow':
+        move_right_elbow(robot_arm,str(position),robot_motion)
 
 
 
