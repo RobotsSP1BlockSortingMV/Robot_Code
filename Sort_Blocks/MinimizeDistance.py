@@ -26,7 +26,7 @@ def initial_position():
 
 #initial_position()
 #rbaction.movement_command('move_neck_left_or_right',140)
-rbaction.movement_command('move_right_lower_shoulder', 120)
+#rbaction.movement_command('move_right_lower_shoulder', 120)
 #time.sleep(3)
 #rbaction.movement_command('move_right_elbow',right_elbow_current)
 while True:
