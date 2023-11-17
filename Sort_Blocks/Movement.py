@@ -135,7 +135,7 @@ def move_head_up_or_down(robot_head,position,robot_motion):
 #Boot up gray rasberry pie wait for it to say cloud login
 #Press enter a few times then login when it says UXA90 login
 #Name,Password is uxa90,uxa90
-#IP address will be displayed in the uppder right hand corner from the device wlano0
+#IP address will be displayed in the upper right hand corner from the device wlano0
 #Append the IP address as I am below to make API calls to command the robot
 
 def movement_command(select_command,position):

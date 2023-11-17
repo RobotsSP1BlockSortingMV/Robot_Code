@@ -2,6 +2,7 @@ import serial
 from time import sleep
 import Movement as rbaction
 
+#Method to activate the magnet and grab the object
 def grab_object():
     ser = serial.Serial(port='com5', baudrate=9600)
     ser.close()
@@ -14,6 +15,7 @@ def grab_object():
     ser.write(bytes.fromhex("A0 01 00 A1"))
     print('Circuit Open. Button is released')
 
+#Backup method to turn the magnet off if needed
 def drop_object():
     ser = serial.Serial(port='com5', baudrate=9600)
     ser.close()
@@ -21,19 +23,3 @@ def drop_object():
     ser.write(bytes.fromhex("A0 01 00 A1"))
     print('Circuit Open. Button is released')
 
-
-#try:
- #   ser = serial.Serial(port='com5', baudrate=9600)
-#    ser.close()
-#    ser.open()
-#    while True:
-#        ser.write(bytes.fromhex("A0 01 01 A2"))
-#        print('Circuit closed. Button is pressed')
-#        sleep(3)
-#        ser.write(bytes.fromhex("A0 01 00 A1"))
-#        print('Circuit Open. Button is released')
-#        sleep(3)
-#except serial.SerialException as e:
-#    print(f"Serial port error: {e}")
-#finally:
-#    ser.close()
