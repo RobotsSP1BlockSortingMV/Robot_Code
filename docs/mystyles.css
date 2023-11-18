@@ -67,10 +67,15 @@ main { padding-left: 20px;
       padding-bottom: 1px;
 }
 main container{
+  display: grid;
+  grid-gap: 10px;
   text-align: center;
 }
 main img {
+
+        float: center;
         display: block;
+        margin: 0 auto;
          padding-right: 20px;
          padding-bottom: 20px;
 }
