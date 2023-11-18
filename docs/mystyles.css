@@ -58,8 +58,9 @@ footer { font-size: 0.70em;
 }
 h3 { color: #000000;
 }
+
 article {
-  float: Center;
+  text-align: Center;
   padding: 20px;
   width: 70%;
   background-color: #f1f1f1;
@@ -72,7 +73,11 @@ main { padding-left: 20px;
       padding-top: 1px;
       padding-bottom: 1px;
 }
-main img { float: left;
+main container{
+  text-align: center;
+}
+main img { float: center;
+        display: block;
          padding-right: 20px;
          padding-bottom: 20px;
 }
